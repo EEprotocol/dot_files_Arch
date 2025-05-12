@@ -2,7 +2,7 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    //"height": 20, // Waybar height (to be removed for auto height)
+    //"height": 15, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -11,11 +11,11 @@
         "wlr/mode",
         "wlr/scratchpad",
         "custom/media",
-        "hyprland/window",
+        //"hyprland/window",
         "wlr/taskbar"
     ],
     "modules-center": [
-        "clock"
+        "custom/clock"
     ],
     "modules-right": [
         "mpris",
@@ -56,7 +56,7 @@
 
     "rewrite": {
       // Desktop
-      "": 
+      "":
         "<span foreground='#89b4fa'> </span> Hyprland",
 
       // Terminal
@@ -64,54 +64,54 @@
       "zsh": "  Terminal",
       "kitty": "  Terminal",
 
-      "tmux(.*)": 
+      "tmux(.*)":
         "<span foreground='#a6e3a1'> </span> Tmux",
 
       // Browser
 
-      "(.*)Mozilla Firefox": 
+      "(.*)Mozilla Firefox":
         "<span foreground='#f38ba8'>󰈹 </span> Firefox",
-      "(.*) — Mozilla Firefox": 
+      "(.*) — Mozilla Firefox":
         "<span foreground='#f38ba8'>󰈹 </span> $1",
 
-      "(.*)Zen Browser": 
+      "(.*)Zen Browser":
         "<span foreground='#fab387'>󰺕 </span> Zen Browser",
-      "(.*) — Zen Browser": 
+      "(.*) — Zen Browser":
         "<span foreground='#fab387'>󰺕 </span> $1",
 
       // Development
 
-      "(.*) - Visual Studio Code": 
+      "(.*) - Visual Studio Code":
         "<span foreground='#89b4fa'>󰨞 </span> $1",
-      "(.*)Visual Studio Code": 
+      "(.*)Visual Studio Code":
         "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
 
-      "nvim": 
+      "nvim":
         "<span foreground='#a6e3a1'> </span> Neovim",
-      "nvim (.*)": 
+      "nvim (.*)":
         "<span foreground='#a6e3a1'> </span> $1",
 
-      "vim": 
+      "vim":
         "<span foreground='#a6e3a1'> </span> Vim",
-      "vim (.*)": 
+      "vim (.*)":
         "<span foreground='#a6e3a1'> </span> $1",
 
       // Media
 
-      "(.*)Spotify": 
+      "(.*)Spotify":
         "<span foreground='#a6e3a1'> </span> Spotify",
-      "(.*)Spotify Premium": 
+      "(.*)Spotify Premium":
         "<span foreground='#a6e3a1'> </span> Spotify Premium",
 
-      "OBS(.*)": 
+      "OBS(.*)":
         "<span foreground='#a6adc8'> </span> OBS Studio",
 
-      "VLC media player": 
+      "VLC media player":
         "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
-      "(.*) - VLC media player": 
+      "(.*) - VLC media player":
         "<span foreground='#fab387'>󰕼 </span> $1",
 
-      "(.*) - mpv": 
+      "(.*) - mpv":
         "<span foreground='#cba6f7'> </span> $1",
 
       "qView": "  qView",
@@ -122,25 +122,25 @@
 
       // Social
 
-      "vesktop": 
+      "vesktop":
         "<span foreground='#89b4fa'> </span> Discord",
 
       "• Discord(.*)": "Discord$1",
-      "(.*)Discord(.*)": 
+      "(.*)Discord(.*)":
         "<span foreground='#89b4fa'> </span> $1Discord$2",
 
       // Documents
 
-      "ONLYOFFICE Desktop Editors": 
+      "ONLYOFFICE Desktop Editors":
         "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
 
-      "(.*).docx": 
+      "(.*).docx":
         "<span foreground='#89b4fa'> </span> $1.docx",
-      "(.*).xlsx": 
+      "(.*).xlsx":
         "<span foreground='#a6e3a1'> </span> $1.xlsx",
-      "(.*).pptx": 
+      "(.*).pptx":
         "<span foreground='#fab387'> </span> $1.pptx",
-      "(.*).pdf": 
+      "(.*).pdf":
         "<span foreground='#f38ba8'> </span> $1.pdf",
 
       // System
@@ -202,7 +202,7 @@
         "tooltip-format": "{app}: {title}"
     },
 
-    
+
 
   "mpris": {
     "format": "{player_icon} {title} - {artist}",
@@ -234,33 +234,44 @@
         // "icon-size": 21,
         "spacing": 10
     },
+
+  "custom/clock": {
+      "exec": "~/.config/waybar/scripts/uptime.sh",
+      "interval": 1,
+      "return-type": "json",
+      "format": "{text}",
+      "format-alt": "{alt}",
+      "tooltip": false
+  },
+
     "clock": {
-        // "timezone": "America/New_York",
-        "format": "{:%Y/%m/%d %a %H:%M}",
-        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "format-alt": "{:%Y-%m-%d}",
-        "calendar": {
-          "mode": "month",
-          "mode-mon-col": 6,
-          "on-click-right": "mode",
-
-          "format": {
-            "months": 
-              "<span color='#b4befe'><b><big>{}</big></b></span>",
-        //    "weekdays": 
-        //      "<span color='#a6adc8' font='7'><big>{}</big></span>",
-            "today": 
-             "<span color='#f38ba8'><b>{}</b></span>"
-         }
-        }
-
+      "interval": 1,
+      // "timezone": "America/New_York",
+      "format": "{:%Y/%m/%d %a %H:%M:%OS}",
+      //"tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "format-alt": "Arch Linux",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 6,
+        "on-click-right": "mode",
+        "format": {
+          "months":
+            "<span color='#b4befe'><b><big>{}</big></b></span>",
+      //    "weekdays":
+      //      "<span color='#a6adc8' font='7'><big>{}</big></span>",
+          "today":
+           "<span color='#f38ba8'><b>{}</b></span>"
+       }
+      }
     },
     "cpu": {
+        "interval": 1,
         "format": " {usage}% ",
         "tooltip": false
     },
     "memory": {
+        "interval": 1,
         "format": " {}% "
     },
   "custom/temperature": {
@@ -284,7 +295,7 @@
         //"format": "{icon} {percent}%",
         "format": "{icon}",
         "tooltip-format": "{percent}%",
-        
+
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 "battery": {
@@ -337,7 +348,8 @@
         //"format-wifi": "{essid} ({signalStrength}%) ",
         //"format-wifi": " ",
         "format-wifi": "{icon}",
-        "format-ethernet": "{ipaddr}/{cidr} 󰌗",
+        //"format-ethernet": "{ipaddr}/{cidr} 󰌗",
+        "format-ethernet": "󰌗",
         "tooltip-format": "󰖩 {ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "󰌙",
@@ -350,19 +362,19 @@
         //"format": "{volume}% {icon} {format_source}",
         "format": "{icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": "󰝟 {format_source}",
         //"format-source": "{volume}% ",
         "format-source": "",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": " ",
+            "hands-free": "󱠢 ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " ", " "]
         },
         "on-click": "pavucontrol"
     },
@@ -389,15 +401,15 @@
     "format-connected": "󰂱",
     "format-connected-battery": "󰂱",
 
-    "tooltip-format": 
+    "tooltip-format":
       "{num_connections} connected",
-    "tooltip-format-disabled": 
+    "tooltip-format-disabled":
       "Bluetooth Disabled",
-    "tooltip-format-connected": 
+    "tooltip-format-connected":
       "{device_enumerate}",
-    "tooltip-format-enumerate-connected": 
+    "tooltip-format-enumerate-connected":
       "{device_alias}",
-    "tooltip-format-enumerate-connected-battery": 
+    "tooltip-format-enumerate-connected-battery":
       ":: {device_alias}: 󱊣 {device_battery_percentage}%",
 
     "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",

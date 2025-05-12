@@ -3,7 +3,7 @@
     /* `otf-font-awesome` is required to be installed for icons */
   font-family:"CaskaydiaMono Nerd Font",sans-serif;
    /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;*/
-    font-size: 13px;
+    font-size: 10.5pt;
     font-weight:bold;
 }
 
@@ -99,7 +99,7 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #mpd {
-  font-size:11pt;
+  font-size:10.5pt;
     padding: 0 10px;
     color: #ffffff;
 }
