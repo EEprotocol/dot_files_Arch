@@ -17,6 +17,9 @@ STATE_FILE="/tmp/hypr_hdmi_mode"
 
 # モード切り替えを判定：HDMIが既に拡張されている場合はミラーに戻す
 if [[ -f "$STATE_FILE" && $(cat "$STATE_FILE") == "extend" ]]; then
+    #hyprctl keyword monitor "$HDMI,preferred,auto,1"
+    #WS_ID=$(hyprctl activeworkspace -j | jq '.id')
+    #hyprctl dispatch moveworkspacetomonitor "$WS_ID $HDMI_NAME"
     echo "to mirror mode"
     hyprctl keyword monitor "$HDMI_NAME,preferred,0x0,1,mirror,$INTERNAL_NAME"
     echo "mirror">"$STATE_FILE"
