@@ -27,6 +27,7 @@ if [[ -f "$STATE_FILE" && $(cat "$STATE_FILE") == "extend" ]]; then
 else
     echo "to extended mode"
     hyprctl keyword monitor "$HDMI_NAME,preferred,0x-1080,1"
+    sleep 0.2
     hyprctl dispatch moveworkspacetomonitor "$EXT_WS $HDMI_NAME"
     echo "extend">"$STATE_FILE"
 fi
