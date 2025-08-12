@@ -4,6 +4,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     //"height": 15, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
+    "output":["eDP-1","HDMI-A-1","DP-1"],
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
@@ -348,6 +349,7 @@
         //"format-wifi": "{essid} ({signalStrength}%) ",
         //"format-wifi": " ",
         "format-wifi": "{icon}",
+        "interface" : "wl*",
         //"format-ethernet": "{ipaddr}/{cidr} 󰌗",
         "format-ethernet": "󰌗",
         "tooltip-format": "󰖩 {ifname} via {gwaddr} ",
@@ -363,7 +365,7 @@
         "format": "{icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "󰝟 {format_source}",
+        "format-muted": "󰝟   {format_source}",
         //"format-source": "{volume}% ",
         "format-source": "",
         "format-source-muted": "",
@@ -424,7 +426,7 @@
     "tooltip": false,
     // "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
-  },
+  }
     //"custom/power": {
     //    "format" : "⏻ ",
 		//"tooltip": false,
