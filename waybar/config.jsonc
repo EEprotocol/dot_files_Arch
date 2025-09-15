@@ -2,7 +2,7 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    //"height": 15, // Waybar height (to be removed for auto height)
+    //"height": 5, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "output":["eDP-1","HDMI-A-1","DP-1"],
     "spacing": 0, // Gaps between modules (4px)
@@ -19,8 +19,9 @@
         "custom/clock"
     ],
     "modules-right": [
+        //"idle_inhibitor",
+        "cava",
         "mpris",
-        "idle_inhibitor",
         "custom/temperature",
         "cpu",
         "memory",
@@ -150,14 +151,14 @@
   },
 "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 16,
+    "icon-size": 13,
     "icon-theme": "Numix-Circle",
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
     "markup":true,
     "ignore-list": [
-       "Foot"
+       "foot"
     ],
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition"
@@ -206,9 +207,11 @@
 
 
   "mpris": {
-    "format": "{player_icon} {title} - {artist}",
-    "format-paused": "{status_icon} {title} - {artist}",
+    /*"format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",*/
 
+    "format": "{player_icon}",
+    "format-paused": "{status_icon}",
     "player-icons": {
       "default": "󰝚 ",
       "spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
@@ -227,12 +230,12 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
     "tray": {
-        // "icon-size": 21,
+         "icon-size": 13,
         "spacing": 10
     },
 
@@ -421,12 +424,12 @@
     "max-length": 1
   },
 
-  "custom/power": {
-    "format": " ",
-    "tooltip": false,
-    // "tooltip-format": "Power Menu",
-    "on-click": "~/.config/waybar/scripts/power-menu.sh"
-  }
+  //"custom/power": {
+  //  "format": " ",
+  //  "tooltip": false,
+  //  // "tooltip-format": "Power Menu",
+  //  "on-click": "~/.config/waybar/scripts/power-menu.sh"
+  //}
     //"custom/power": {
     //    "format" : "⏻ ",
 		//"tooltip": false,
@@ -438,5 +441,30 @@
 		//	"suspend": "systemctl suspend",
 		//	"hibernate": "systemctl hibernate"
 		//}
-    //}
+ "cava": {
+        // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "framerate": 60,
+        "autosens": 1,
+        //"sensitivity": 100,
+        "bars": 25,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "hide_on_silence": true,
+        //"format_silent": "quiet",
+        "sleep_timer": 3,
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        //"monstercat": false,
+        "waves": true,
+        "noise_redpause/resumeuction": 0.77,
+        "input_delay": 2,
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode",
+                   "on-click": "pkill -STOP cava || pkill -CONT cava"
+                   }
+    }
 }
